@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Muresan_Miriam_Lab2"
-        mc:Ignorable="d" Height="379" Width="800" Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}" ResizeMode="NoResize" Title="Pizzeria Colosseo">
+        mc:Ignorable="d" Height="379" Width="800" Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}" ResizeMode="NoResize" Title="Pizzeria Colosseo" Loaded="frmMain_Loaded">
     <Grid Height="396" VerticalAlignment="Top">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="356*"/>
@@ -27,7 +27,7 @@
                 <GroupBox x:Name="gbSale" Header="Current Sale" Height="165" Width="755" Canvas.Top="111" Canvas.Left="-9">
                     <Canvas Margin="0,0,21,0" Height="160">
                         <Label x:Name="lblQuantity" Content="Quantity" Canvas.Top="2" FontWeight="Normal"/>
-                        <TextBox x:Name="txtQuantity" Text="0" TextWrapping="Wrap" Width="120" RenderTransformOrigin="1.167,1.399" Canvas.Left="64" Canvas.Top="6" HorizontalContentAlignment="Right" Height="22" FontWeight="Normal"/>
+                        <TextBox x:Name="txtQuantity" Text="0" TextWrapping="Wrap" Width="120" RenderTransformOrigin="1.167,1.399" Canvas.Left="64" Canvas.Top="6" HorizontalContentAlignment="Right" Height="22" FontWeight="Normal" KeyUp="txtQuantity_KeyUp"/>
                         <Label x:Name="lblType" Content="Type" Canvas.Left="231" FontWeight="Normal"/>
                         <ComboBox x:Name="cmbType" Width="120" SelectionChanged="cmbType_SelectionChanged" Canvas.Left="281" Canvas.Top="6"/>
                         <Label x:Name="lblTotal" Content="TOTAL" FontWeight="Bold" RenderTransformOrigin="13.958,2.968" Height="27" Width="45" Canvas.Left="472" Canvas.Top="118"/>
@@ -46,17 +46,22 @@
         <Menu x:Name="mnuMain" HorizontalAlignment="Left" Height="19" VerticalAlignment="Top"
 Width="81">
             <MenuItem Header="File">
-                <MenuItem Header="Exit"/>
+                <MenuItem Header="Exit" Click="exitMenuItem_Click"></MenuItem> 
             </MenuItem>
             <MenuItem Header="Pizza">
                 <MenuItem Header="Make">
-                   <MenuItem x:Name="margPizzaMenuItem" Header="Margherita Pizza"/>
-                   <MenuItem x:Name="pepPizzaMenuItem" Header="Pepperoni Pizza"/>
-                   <MenuItem x:Name="vegPizzaMenuItem" Header="Veggie Pizza"/>
-                   <MenuItem x:Name="quatPizzaMenuItem" Header="Quattro Stagioni Pizza"/>
-                   <MenuItem x:Name="canPizzaMenuItem" Header="Canibale Pizza"/>
+                    <MenuItem x:Name="margPizzaMenuItem" Header="Margherita Pizza" 
+                              Click="margPizzaMenuItem_Click" IsCheckable="True"/>
+                    <MenuItem x:Name="pepPizzaMenuItem" Header="Pepperoni Pizza"
+                             Click="pepPizzaMenuItem_Click" IsCheckable="True" />
+                    <MenuItem x:Name="vegPizzaMenuItem" Header="Veggie Pizza"
+                             Click="vegPizzaMenuItem_Click" IsCheckable="True" />
+                    <MenuItem x:Name="quatPizzaMenuItem" Header="Quattro Stagioni Pizza"
+                             Click="quatPizzaMenuItem_Click" IsCheckable="True" />
+                   <MenuItem x:Name="canPizzaMenuItem" Header="Canibale Pizza"
+                             Click="canPizzaMenuItem_Click" IsCheckable="True"/>
                 </MenuItem>
-            <MenuItem Header="Stop"/>
+                <MenuItem Header="Stop" x:Name="mnuStop" Click="stopMenuItem_Click"/>
             </MenuItem>
         </Menu>
     </Grid>
